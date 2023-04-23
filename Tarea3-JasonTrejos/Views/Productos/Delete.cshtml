@@ -1,0 +1,76 @@
+﻿@model Tarea3_JasonTrejos.Models.Productos
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 style="color:#54557B">Lista de productos en almacen</h1>
+
+<hr />
+<h4 style="text-align:center"><strong style="color:#0E13BB">Está seguro de eliminar este producto del inventario?</strong></h4>
+<hr />
+<div>
+    <h4>Detalles del producto</h4>
+    <hr />
+    @if (Model.fechaCaducidad_Producto <= DateTime.Now)
+    {
+        <div class="alert alert-danger" role="alert">
+            Este producto se encuentra vencido<br>
+        </div>
+    }
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.lote_Producto)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.lote_Producto)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.fechaFabricacion_Producto)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.fechaFabricacion_Producto)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.nombre_Producto)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.nombre_Producto)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.nombre_Proveedor)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.nombre_Proveedor)
+        </dd>
+        @if (Model.fechaCaducidad_Producto <= DateTime.Now)
+        {
+            <dt class="col-sm-2 bg-danger text-light">
+               @Html.DisplayNameFor(model => model.fechaCaducidad_Producto)
+
+            </dt>
+            <dd class="col-sm-10 bg-danger text-light">
+                @Html.DisplayFor(model => model.fechaCaducidad_Producto)
+            </dd>
+        }else{
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.fechaCaducidad_Producto)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.fechaCaducidad_Producto)
+            </dd>
+        }
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="id_Producto" />
+        <input type="submit" value="Eliminar producto" class="btn btn-danger" /> |
+        <a asp-action="Index">Volver al inventario</a>
+    </form>
+</div>
+
+
+
+

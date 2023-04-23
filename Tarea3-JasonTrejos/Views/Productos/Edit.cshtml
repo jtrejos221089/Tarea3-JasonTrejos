@@ -1,0 +1,60 @@
+﻿@model Tarea3_JasonTrejos.Models.Productos
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h1 style="color:#54557B">Lista de productos en almacen</h1>
+
+<hr />
+<h4 style="text-align:center"><strong style="color:#0E13BB">Está seguro de editar este producto del inventario?</strong></h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="id_Producto" />
+            @if (Model.fechaCaducidad_Producto <= DateTime.Today)
+            {
+                <div class="alert alert-danger" role="alert">
+                    <p><strong>Este producto se encuentra vencido. Verifique la fecha de caducidad.</strong></p>
+                </div>
+            }
+            <div class="form-group">
+                <label asp-for="lote_Producto" class="control-label"></label>
+                <input asp-for="lote_Producto" class="form-control" />
+                <span asp-validation-for="lote_Producto" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="fechaFabricacion_Producto" class="control-label"></label>
+                <input asp-for="fechaFabricacion_Producto" class="form-control" />
+                <span asp-validation-for="fechaFabricacion_Producto" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="nombre_Producto" class="control-label"></label>
+                <input asp-for="nombre_Producto" class="form-control" />
+                <span asp-validation-for="nombre_Producto" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="nombre_Proveedor" class="control-label"></label>
+                <input asp-for="nombre_Proveedor" class="form-control" />
+                <span asp-validation-for="nombre_Proveedor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="fechaCaducidad_Producto" class="control-label"></label>
+                <input asp-for="fechaCaducidad_Producto" class="form-control" />
+                <span asp-validation-for="fechaCaducidad_Producto" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Guardar cambios" class="btn btn-primary" />
+                <a class="btn btn-outline-info" asp-action="Index">Volver al inventario</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

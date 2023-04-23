@@ -1,0 +1,32 @@
+﻿@{
+    ViewData["Title"] = "Página de bienvenida";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Bienvenido al <br />Sistema de Administración de Productos (S.A.P.)</h1><hr />
+    <br /> 
+    <h4 class="text-primary">A continuación se le presentan las siguientes opciones disponibles en el sistema para su escogencia.</h4>
+</div>
+
+<nav class="navbar navbar-light" style="background-color: #E5F3FC;">
+    <div class="text-center">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="carousel-control-next-icon"></span>
+        </button>
+        <span class="text-black-50"><strong>Menú principal</strong></span>
+    </div>
+</nav>
+<div class="collapse" id="navbarToggleExternalContent">
+    <div class="navbar navbar-light" style="background-color: #E5F3FC;">
+        <div class="text-center">
+            <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                <ul class="navbar-nav flex-grow-1">
+                    <li class="nav-item">
+                        <a class="btn btn-success btn-lg" asp-area="" asp-controller="Productos" asp-action="Index">Inventario</a>
+                        <span>Esta opción le permite visualizar una lista de los productos que se encuentren en el inventario</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
